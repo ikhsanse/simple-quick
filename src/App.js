@@ -9,6 +9,7 @@ import { InboxContextProvider } from "./data/inbox-context";
 
 
 function App() {
+  document.title = "Simpe Quick"
   const [openMenu, setOpenMenu] = useState(false);
   const [inboxShow, setInboxShow] = useState(false);
   const [taskShow, setTaskShow] = useState(false);
