@@ -1,0 +1,151 @@
+[
+  {
+    "id" : "3",
+    "title": "I-589 - AMARKHIL, Obaidullah [Affirmative Filing with ZHN]",
+    "participants": 3,
+    "inbox": [
+      {
+        "date": "2023-01-05T18:25:43.511Z",
+        "chats": [
+          {
+            "participant": 1,
+            "name": "Marry Hilda",
+            "text": "I understand your initial concerns and thats very valid",
+            "time": "2023-01-05T18:30:43.511Z"
+          },
+          {
+            "participant": 2,
+            "name": "You",
+            "text": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est recusandae harum quis iste impedit totam quos accusamus, nihil eaque at sunt amet consectetur! Iure, quod asperiores neque quas nesciunt magnam!",
+            "time": "2023-01-05T18:33:43.511Z"
+          },
+          {
+            "participant": 3,
+            "name": "Obaidullah Amarkhil",
+            "text": " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est recusandae harum quis iste impedit totam quos accusamus",
+            "time": "2023-01-05T18:34:43.511Z"
+          },
+          {
+            "participant": 1,
+            "name": "Marry Hilda",
+            "text": "Just Fill me in for his updates yea?",
+            "time": "2023-01-05T19:32:43.511Z"
+          },
+          {
+            "participant": 2,
+            "name": "You",
+            "text": "No worries. It will be completed ASAP. I've asked him yesterday.",
+            "time": "2023-01-05T19:33:43.511Z"
+          }
+        ]
+      },
+      {
+        "date": "2023-01-06T18:25:43.511Z",
+        "chats": [
+          {
+            "participant": 1,
+            "name": "Marry Hilda",
+            "text": "Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.",
+            "time": "2023-01-05T19:33:43.511Z"
+          },
+          {
+            "participant": 2,
+            "name": "You",
+            "text": "Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.",
+            "time": "2023-01-06T18:33:43.511Z"
+          },
+          {
+            "participant": 1,
+            "name": "Marry Hilda",
+            "text": "Sure thing ,Claren.",
+            "time": "2023-01-06T18:34:43.511Z"
+          },
+          {
+            "participant": 3,
+            "name": "Obaidullah Amarkhil",
+            "text": "Morning. I'll try to do them. Thanks",
+            "time": "2023-01-06T19:32:43.511Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id" :"2",
+    "title": "109220-Naturalization",
+    "participants": 3,
+    "inbox": [
+      {
+        "date": "2023-02-06T18:25:43.511Z",
+        "chats": [
+          {
+            "participant": 1,
+            "name": "Marry Hilda",
+            "text": "I understand your initial concerns and thats very valid",
+            "time": "2023-01-06T18:30:43.511Z"
+          },
+          {
+            "participant": 2,
+            "name": "You",
+            "text": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est recusandae harum quis iste impedit totam quos accusamus, nihil eaque at sunt amet consectetur! Iure, quod asperiores neque quas nesciunt magnam!",
+            "time": "2023-01-06T18:33:43.511Z"
+          },
+          {
+            "participant": 3,
+            "name": "Cameron Philips",
+            "text": "Please check this out",
+            "time": "2023-01-06T18:34:43.511Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id" : "4",
+    "title": "Jeannette Moraima Guaman Chamba (Hutto I-589) [ Hutto Follow Up - Brief Service ]",
+    "participants": 3,
+    "inbox": [
+        {
+          "date": "2023-02-06T18:25:43.511Z",
+          "chats": [
+            {
+              "participant": 1,
+              "name": "Marry Hilda",
+              "text": "I understand your initial concerns and thats very valid",
+              "time": "2023-02-05T18:30:43.511Z"
+            },
+            {
+              "participant": 2,
+              "name": "You",
+              "text": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est recusandae harum quis iste impedit totam quos accusamus, nihil eaque at sunt amet consectetur! Iure, quod asperiores neque quas nesciunt magnam!",
+              "time": "2023-02-05T18:33:43.511Z"
+            },
+            {
+              "participant": 3,
+              "name": "Ellen",
+              "text": "Hey, please read.",
+              "time": "2023-01-06T18:32:43.511Z"
+            }
+          ]
+        }
+      ]
+  },
+  {
+    "id" : "1",
+    "title": "FastVisa Support",
+    "participant": 2,
+    "inbox": [
+        {
+          "date": "2023-01-06T18:25:43.511Z",
+          "chats": [
+            {
+              "participant": 4,
+              "name": "FastVisa Support",
+              "text": "Hey there! Welcome to your inbox.",
+              "time": "2023-01-06T18:20:43.511Z"
+            }
+          ]
+        }
+      ]
+  }
+]
