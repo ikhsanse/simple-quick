@@ -47,10 +47,10 @@ const TodosMain = () => {
           </button>
           {showFillter ? (
             <ul className="z-[99] style-none absolute mt-8 font-bold rounded text-[12px] 2xl:text-[16px] divide-y-2 border-2 bg-white">
-              <li className="cursor-pointer">
+              <li className="cursor-pointer" onClick={()=>setShowFillter(false)}>
                 <p className="pl-2 pr-16 py-1">Personal Errand</p>
               </li>
-              <li className="cursor-pointer">
+              <li className="cursor-pointer" onClick={()=>setShowFillter(false)}>
                 <p className="pl-2 py-1">Urgent To-Do</p>
               </li>
             </ul>

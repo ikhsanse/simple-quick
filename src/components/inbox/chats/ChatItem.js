@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const ChatItem = (props) => {
+  const [showTool, setShowTool] = useState(false)
   const [bgColor, setbgColor] = useState();
   const [color, setColor] = useState();
   // console.log(props.chat)
@@ -82,10 +83,10 @@ const ChatItem = (props) => {
           <div
             className={`${participant === 2 ? "order-first" : "order-last"} relative`}
           >
-            <p onClick={props.openTools} className="font-bold cursor-pointer self-start py-0 leading-[2px] mx-2">
+            <p onClick={()=>setShowTool(!showTool)} className="font-bold cursor-pointer self-start py-0 leading-[2px] mx-2">
               ...
             </p>
-            <div className={`${props.showTool ? 'block' : 'hidden'} border-2 bg-white absolute px-2 mt-2 text-[14px]`}>
+            <div className={`${showTool ? 'block' : 'hidden'} border-2 bg-white absolute px-2 mt-2 text-[14px]`}>
               <div className="border-b-[1px] cursor-pointer">
                 <p className="text-[#2F80ED]">Edit</p>
               </div>

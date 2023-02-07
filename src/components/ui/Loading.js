@@ -3,7 +3,7 @@ import React from 'react'
 const Loading = (props) => {
   return (
     <div className="absolute top-[43%] left-[40%] 2xl:left-[42%]">
-        <div class="text-center">
+        <div className="text-center">
           <div role="status">
             <svg
               aria-hidden="true"

@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Loading from "../ui/Loading";
 import InboxItem from "./InboxItem";
 
+const InboxList = (props) => {
+  const [isLoading, setIsloading] = useState(false);
 
-const InboxList = ({listInbox}) => {
+  useEffect(() => {
+    setIsloading(true);
+    setTimeout(() => {
+      setIsloading(false);
+    }, 500);
+  }, []);
+
+  console.log(isLoading)
 
   return (
     <div className="px-[32px] py-[24px]">
-    <div className="relative w-full">
-        <svg className="absolute right-[58px] top-[27%]"
+      <div className="relative w-full">
+        <svg
+          className="absolute right-[58px] top-[27%]"
           width="12"
           height="12"
           viewBox="0 0 32 31"
@@ -28,15 +39,18 @@ const InboxList = ({listInbox}) => {
           id=""
         />
       </div>
-      <ul className="style-none list-inbox mt-5">
-        {listInbox.map((item) => (<InboxItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              participants={item.participants}
-              inbox={item.inbox}
-            />))}
-      </ul>
+      {isLoading ? <Loading text="Loading Chat..."/> : <ul className="style-none list-inbox mt-5">
+        {props.listInbox.map((item) => (
+          <InboxItem
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            participants={item.participants}
+            inbox={item.inbox}
+          />
+        ))}
+      </ul>}
+      
     </div>
   );
 };

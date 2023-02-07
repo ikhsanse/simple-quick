@@ -177,14 +177,14 @@ const TodoItem = (props) => {
           />
           <span
             className={`${
-              status ? "line-through" : ""
-            } 2xl:text-[12px] text-[11px] font-bold`}
+              status ? "line-through text-[#828282]" : "text-black font-bold"
+            } 2xl:text-[12px] text-[11px]`}
           >
             {props.todo}
           </span>
         </div>
         <div className="flex relative">
-          <span className="2xl:text-[12px] text-[11px] text-red-600 mx-1">
+          <span className={`${status ? 'hidden' : 'flex'} 2xl:text-[12px] text-[11px] text-red-600 mx-1`}>
             2 Days Left
           </span>
           <span className="2xl:text-[12px] text-[11px] mx-1">2/2/2023</span>

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ChatItem from "./ChatItem";
 
 const ChatList = (props) => {
-  const [showTool, setShowTool] = useState(false)
   const lastInbox = props.inbox[props.inbox?.length - 1];
   const chatInbox = lastInbox?.chats;
   const lastChat = chatInbox[chatInbox?.length - 1]
@@ -31,9 +30,7 @@ const ChatList = (props) => {
     ", " +
     date.getUTCFullYear();
 
-    const openTools = () => {
-      setShowTool(!showTool)
-    }
+
   return (
     <div className="relative font-lato">
       <fieldset className="border-t border-slate-300">
@@ -43,7 +40,7 @@ const ChatList = (props) => {
       </fieldset>
       <ul className="style-none">
         {props.chats.map((item, idx) => (
-          <ChatItem key={idx} chat={item} chatNumberItem={chatNumberItem} newChat={lastChat} showTool={showTool} openTools={openTools} />
+          <ChatItem key={idx} id={item.id} index={idx} chat={item} chatNumberItem={chatNumberItem} newChat={lastChat} />
         ))}
       </ul>
     </div>
