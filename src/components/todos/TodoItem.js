@@ -67,9 +67,14 @@ const options = {
 };
 
 const TodoItem = (props) => {
+  const editDetail =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minimasapiente totam expedita";
   const [status, setStatus] = useState(props.status);
   const [show, setShow] = useState(false);
   const [expand, setExpand] = useState(false);
+  const [editValue, setEditValue] = useState(`${props.todo} - ${editDetail}`);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const handleChange = (date) => {
     console.log(date);
   };
@@ -83,12 +88,22 @@ const TodoItem = (props) => {
   const handleExpand = () => {
     setExpand(!expand);
   };
-  useEffect(()=> {
-    if(props.index === 0 || props.index === 3) {
-        setExpand(true)
+  useEffect(() => {
+    if (props.index === 0 || props.index === 3) {
+      setExpand(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const editHandler = (e) => {
+    e.preventDefault();
+    setEditValue(e.target.value);
+  };
+
+  const openDeleteHandler = () => {
+    setOpenDelete(!openDelete);
+  };
+
   let expandContent;
 
   if (expand) {
@@ -117,7 +132,8 @@ const TodoItem = (props) => {
         <div className="flex mt-1">
           <div className="h-inherit self-center">
             <svg
-              className="w-[12px] h-[12px] fill-[#2F80ED] mr-3"
+              onClick={() => setOpenEdit(!openEdit)}
+              className="w-[12px] h-[12px] fill-[#2F80ED] mr-3 cursor-pointer"
               viewBox="0 0 16 15"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -125,12 +141,21 @@ const TodoItem = (props) => {
               <path d="M12.2165 0C12.0082 0 11.7915 0.0833333 11.6332 0.241667L10.1082 1.76667L13.2332 4.89167L14.7582 3.36667C15.0832 3.04167 15.0832 2.51667 14.7582 2.19167L12.8082 0.241667C12.6415 0.075 12.4332 0 12.2165 0ZM9.21667 5.01667L9.98333 5.78333L2.43333 13.3333H1.66667V12.5667L9.21667 5.01667ZM0 11.875L9.21667 2.65833L12.3417 5.78333L3.125 15H0V11.875Z" />
             </svg>
           </div>
-          <div>
-            <p className="2xl:text-[12px] text-[11px] max-w-[90%]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-              sapiente totam expedita praesentium, illum nihil aspernatur,
-              laudantium minus eum nostrum voluptatum
-            </p>
+          <div className="w-full">
+            {openEdit ? (
+              <textarea
+                onChange={editHandler}
+                type="text"
+                className=" w-3/4 leading-4 text-[11px] rounded border-slate-300"
+                rows="2"
+                value={editValue}
+                placeholder={editValue}
+              />
+            ) : (
+              <p className="2xl:text-[12px] text-[11px] max-w-[90%]">
+                {editValue}
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -151,17 +176,23 @@ const TodoItem = (props) => {
             id=""
           />
           <span
-            className={`${status ? "line-through" : ""} 2xl:text-[12px] text-[11px] font-bold`}
+            className={`${
+              status ? "line-through" : ""
+            } 2xl:text-[12px] text-[11px] font-bold`}
           >
             {props.todo}
           </span>
         </div>
-        <div className="flex">
-          <span className="2xl:text-[12px] text-[11px] text-red-600 mx-1">2 Days Left</span>
+        <div className="flex relative">
+          <span className="2xl:text-[12px] text-[11px] text-red-600 mx-1">
+            2 Days Left
+          </span>
           <span className="2xl:text-[12px] text-[11px] mx-1">2/2/2023</span>
           <svg
             onClick={handleExpand}
-            className={`${expand ? "rotate-180": ''} mx-1 self-center ease-in duration-200 cursor-pointer`}
+            className={`${
+              expand ? "rotate-180" : ""
+            } mx-1 self-center ease-in duration-200 cursor-pointer`}
             width="11"
             height="8"
             viewBox="0 0 11 8"
@@ -173,7 +204,22 @@ const TodoItem = (props) => {
               fill="#4F4F4F"
             />
           </svg>
-          <span className="text-[12px] mx-1 leading-[6px] select-none cursor-pointer">...</span>
+          <span
+            onClick={openDeleteHandler}
+            className="text-[12px] mx-1 leading-[6px] select-none cursor-pointer"
+          >
+            ...
+          </span>
+          {openDelete ? (
+            <button
+              onClick={() => setOpenDelete(false)}
+              className="absolute text-[12px] border-[1px] rounded py-1 pl-2 pr-5 text-[#EB5757] right-0 top-4"
+            >
+              Delete
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="ml-6 transition-all duration-500">{expandContent}</div>

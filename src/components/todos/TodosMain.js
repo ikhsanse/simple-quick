@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TodoList from "./TodoList";
 
 const TodosMain = () => {
+  const scrollRef= useRef()
   const [showFillter, setShowFillter] = useState(false);
+  const [showInput,setShowInput] = useState(false)
 
   const openFilterHandler = () => {
     setShowFillter(!showFillter);
   };
+  const showInputHandler = () => {
+    setShowInput(!showInput)
+  }
+
+  useEffect(()=>{
+    if(showInput) {
+      scrollRef.current.scroll({
+        top: 700,
+        behavior: "smooth",
+      });
+    }
+  },[showInput])
+
   return (
     <div className="font-lato px-[24px] py-[16px] 2xl:px-[32px] 2xl:py-[24px]">
       <div className="relative pb-3">
-        <div className="flex justify-between" onClick={openFilterHandler}>
-          <div className="flex border-[1px] w-auto border-[#828282] py-1 px-3 rounded ml-14 cursor-pointer">
+        <div className="flex justify-between">
+          <div onClick={openFilterHandler} className="flex border-[1px] w-auto border-[#828282] py-1 px-3 rounded ml-14 cursor-pointer">
             <button className="bg-transparent text-[12px] 2xl:text-[16px] font-bold">
               My Task
             </button>
@@ -27,7 +42,7 @@ const TodosMain = () => {
               />
             </svg>
           </div>
-          <button className="bg-bolt py-1 px-3 text-white text-[12px] 2xl:text-[16px] rounded">
+          <button onClick={showInputHandler} className="bg-bolt py-1 px-3 text-white text-[12px] 2xl:text-[16px] rounded">
             New Task
           </button>
           {showFillter ? (
@@ -44,8 +59,8 @@ const TodosMain = () => {
           )}
         </div>
       </div>
-      <div className="max-h-[400px] 2xl:max-h-[700px] overflow-y-auto">
-        <TodoList />
+      <div ref={scrollRef} className="max-h-[400px] 2xl:max-h-[600px] overflow-y-auto">
+        <TodoList show={showInput} />
       </div>
     </div>
   );
