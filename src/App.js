@@ -3,8 +3,10 @@ import "./App.css";
 import Home from "./components/Home";
 import InboxMain from "./components/inbox/InboxMain";
 import Menu from "./components/Menu";
+import TodosMain from "./components/todos/TodosMain";
 import MenuBox from "./components/ui/MenuBox";
 import { InboxContextProvider } from "./data/inbox-context";
+
 
 function App() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -67,7 +69,9 @@ function App() {
         </MenuBox>
       )}
       {taskShow && (
-        <MenuBox/>
+        <MenuBox>
+            <TodosMain/>
+        </MenuBox>
       )}
     </div>
   );

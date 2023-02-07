@@ -1,0 +1,22 @@
+.date-picker > div > div > div {
+    position: absolute;
+    left:75%;
+  }
+
+.picker span {
+    font-size: 9px;
+    padding: 0;
+    line-height: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.picker button {
+    font-size: 10px;
+    padding: 0 1rem ;
+}
+.picker > div > div:nth-child(2) > div:nth-child(2) {
+    width: 180px;
+}
+.pikcer > div {
+    background: #000;
+}

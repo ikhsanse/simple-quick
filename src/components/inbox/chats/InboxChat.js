@@ -5,14 +5,12 @@ import ChatList from "./ChatList";
 const InboxChat = () => {
   const myRef = useRef();
   const [scrollTop, setScrollTop] = useState(0);
-  const [chatNumber, setChatNumber] = useState([])
   const [newChatStatus, setNewChatStatus] = useState(false);
   const inboxCtx = useContext(InboxContext);
   const participants = inboxCtx.chats.participants;
   const title = inboxCtx.chats.title;
   const inbox = inboxCtx.chats.inbox;
-  // console.log(inbox)
-
+  
   const closeChat = () => {
     inboxCtx.closeChat();
   };
