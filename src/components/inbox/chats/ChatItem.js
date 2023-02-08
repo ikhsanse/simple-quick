@@ -44,7 +44,6 @@ const ChatItem = (props) => {
     props.chat.text,
   ]);
 
-
   return (
     <>
       {lastChat === true && props.chatNumberItem >3 ? (

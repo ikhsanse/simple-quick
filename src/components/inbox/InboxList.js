@@ -12,8 +12,6 @@ const InboxList = (props) => {
     }, 500);
   }, []);
 
-  console.log(isLoading)
-
   return (
     <div className="px-[32px] py-[24px]">
       <div className="relative w-full">
@@ -49,8 +47,7 @@ const InboxList = (props) => {
             inbox={item.inbox}
           />
         ))}
-      </ul>}
-      
+      </ul>}   
     </div>
   );
 };

@@ -10,7 +10,7 @@ const InboxMain = (props) => {
   
   return (
     <>
-      {inboxCtx.chatStatus ? <InboxChat /> : <InboxList listInbox={inboxData}/>}
+      {inboxCtx.chatStatus ? <InboxChat closeInbox={props.closeInbox} /> : <InboxList listInbox={inboxData}/>}
     </>
   );
 };

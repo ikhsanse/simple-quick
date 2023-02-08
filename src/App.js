@@ -31,6 +31,10 @@ function App() {
     setTaskShow(!taskShow);
   };
 
+  const closeInbox = () => {
+    setInboxShow(false)
+  }
+
   useEffect(() => {
     if (inboxShow && taskShow) {
       setOpenMenu(false);
@@ -65,13 +69,13 @@ function App() {
       {inboxShow && (
         <MenuBox>
           <InboxContextProvider>
-            <InboxMain />
+            <InboxMain closeInbox={closeInbox} />
           </InboxContextProvider>
         </MenuBox>
       )}
       {taskShow && (
         <MenuBox>
-            <TodosMain/>
+            <TodosMain />
         </MenuBox>
       )}
     </div>

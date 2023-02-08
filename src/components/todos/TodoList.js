@@ -13,13 +13,12 @@ const TodoList = (props) => {
       const resJson = await response.json();
       setTodos(resJson.todos);
       setIsloading(false);
-      // console.log(resJson.todos)
     } catch (err) {
       console.log(err);
       setIsloading(false);
     }
   };
-  console.log(isLoading);
+ 
   useEffect(() => {
     getTodos();
   }, []);

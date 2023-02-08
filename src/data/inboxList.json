@@ -148,7 +148,7 @@
   {
     "id" : "1",
     "title": "FastVisa Support",
-    "participant": 2,
+    "participants": 2,
     "inbox": [
         {
           "date": "2023-01-06T18:25:43.511Z",

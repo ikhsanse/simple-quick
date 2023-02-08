@@ -76,7 +76,7 @@ const TodoItem = (props) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const handleChange = (date) => {
-    console.log(date);
+    //
   };
   const handleClose = () => {
     setShow(!show);

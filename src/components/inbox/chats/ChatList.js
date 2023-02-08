@@ -40,7 +40,7 @@ const ChatList = (props) => {
       </fieldset>
       <ul className="style-none">
         {props.chats.map((item, idx) => (
-          <ChatItem key={idx} id={item.id} index={idx} chat={item} chatNumberItem={chatNumberItem} newChat={lastChat} />
+          <ChatItem key={idx} index={idx} chat={item} chatNumberItem={chatNumberItem} newChat={lastChat} />
         ))}
       </ul>
     </div>
