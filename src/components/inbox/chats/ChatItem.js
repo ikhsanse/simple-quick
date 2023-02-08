@@ -85,14 +85,14 @@ const ChatItem = (props) => {
             <p onClick={()=>setShowTool(!showTool)} className="font-bold cursor-pointer self-start py-0 leading-[2px] mx-2">
               ...
             </p>
-            <div className={`${showTool ? 'block' : 'hidden'} border-2 bg-white absolute px-2 mt-2 text-[14px]`}>
-              <div className="border-b-[1px] cursor-pointer">
+            <ul className={`${showTool ? 'block' : 'hidden'} divide-y-[1px] w-auto rounded border-[1px] bg-white absolute mt-2 text-[12px] 2xl:text-[14px]`}>
+              <li className="cursor-pointer ml-1 pr-10" onClick={()=>{setShowTool(false)}}>
                 <p className="text-[#2F80ED]">Edit</p>
-              </div>
-              <div>
+              </li>
+              <li className="ml-1" onClick={()=>{setShowTool(false)}} >
                 <p className="text-[#EB5757] cursor-pointer">Delete</p>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </li>
