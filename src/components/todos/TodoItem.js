@@ -69,12 +69,12 @@ const options = {
 const TodoItem = (props) => {
   const editDetail =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minimasapiente totam expedita";
-  const [status, setStatus] = useState(props.status);
+  const [status, setStatus] = useState(props.todo.completed);
   const [show, setShow] = useState(false);
   const [expand, setExpand] = useState(false);
-  const [editValue, setEditValue] = useState(`${props.todo} - ${editDetail}`);
+  const [editValue, setEditValue] = useState(`${props.todo.todo} - ${editDetail}`);
   const [openEdit, setOpenEdit] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
+  // const [openDelete, setOpenDelete] = useState(false);
   const handleChange = (date) => {
     //
   };
@@ -100,9 +100,18 @@ const TodoItem = (props) => {
     setEditValue(e.target.value);
   };
 
-  const openDeleteHandler = () => {
-    setOpenDelete(!openDelete);
-  };
+  // const openDeleteHandler = () => {
+  //   setOpenDelete(!openDelete);
+  // };
+
+  const removeTodo = (id) => {
+    props.removeTodo(id)
+    props.setOpenDelete(undefined)
+  }
+
+  const openDeleteHandler = (id) => {
+    props.setOpenDelete(id)
+  }
 
   let expandContent;
 
@@ -180,7 +189,7 @@ const TodoItem = (props) => {
               status ? "line-through text-[#828282]" : "text-black font-bold"
             } 2xl:text-[12px] text-[11px]`}
           >
-            {props.todo}
+            {props.todo.todo}
           </span>
         </div>
         <div className="flex relative">
@@ -205,15 +214,16 @@ const TodoItem = (props) => {
             />
           </svg>
           <span
-            onClick={openDeleteHandler}
+            onClick={()=>openDeleteHandler(props.todo.id)}
             className="text-[12px] mx-1 leading-[6px] select-none cursor-pointer"
           >
             ...
           </span>
-          {openDelete ? (
+          {props.openDelete === props.todo.id ? (
             <button
-              onClick={() => setOpenDelete(false)}
-              className="absolute text-[12px] border-[1px] rounded py-1 pl-2 pr-5 text-[#EB5757] right-0 top-4"
+              onClick={() => removeTodo(props.todo.id)}
+              // onClose={props.setOpenDelete(undefined)}
+              className="absolute z-[9999] text-[12px] border-[1px] bg-white rounded py-1 pl-2 pr-5 text-[#EB5757] right-0 top-4"
             >
               Delete
             </button>

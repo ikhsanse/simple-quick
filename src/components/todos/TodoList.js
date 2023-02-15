@@ -6,6 +6,7 @@ import Loading from "../ui/Loading";
 const TodoList = (props) => {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsloading] = useState(false);
+  const [openDelete, setOpenDelete] = useState();
   const getTodos = async () => {
     setIsloading(true);
     try {
@@ -18,10 +19,20 @@ const TodoList = (props) => {
       setIsloading(false);
     }
   };
+
+  const removeTodo = (id) => {
+    // console.log(id)
+    const newTodo = todos.filter(todo => todo.id !== id)
+    setTodos(newTodo)
+  }
  
   useEffect(() => {
     getTodos();
   }, []);
+  const openDeleteHandler = (id) => {
+    // console.log(id)
+    setOpenDelete(id)
+  }
   return (
     <>
       {isLoading ? (
@@ -33,8 +44,10 @@ const TodoList = (props) => {
               <TodoItem
                 index={idx}
                 key={idx}
-                todo={todo.todo}
-                status={todo.completed}
+                todo={todo}
+                removeTodo={removeTodo}
+                setOpenDelete={openDeleteHandler}
+                openDelete={openDelete}
               />
             ))}
             {props.show && <TodoNewItem />}

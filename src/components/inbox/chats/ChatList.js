@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ChatItem from "./ChatItem";
 
 const ChatList = (props) => {
   const lastInbox = props.inbox[props.inbox?.length - 1];
   const chatInbox = lastInbox?.chats;
-  const lastChat = chatInbox[chatInbox?.length - 1]
+  const lastChat = chatInbox[chatInbox?.length - 1];
+  const [showTool, setShowTool] = useState();
 
-  const chatNumberItem = props.chats.length
-  
+  const chatNumberItem = props.chats.length;
+
   const month = [
     "January",
     "February",
@@ -30,6 +31,9 @@ const ChatList = (props) => {
     ", " +
     date.getUTCFullYear();
 
+  const openTools = (idx) => {
+    setShowTool(idx)
+  }
 
   return (
     <div className="relative font-lato">
@@ -40,7 +44,15 @@ const ChatList = (props) => {
       </fieldset>
       <ul className="style-none">
         {props.chats.map((item, idx) => (
-          <ChatItem key={idx} index={idx} chat={item} chatNumberItem={chatNumberItem} newChat={lastChat} />
+          <ChatItem
+            key={idx}
+            index={idx}
+            chat={item}
+            chatNumberItem={chatNumberItem}
+            newChat={lastChat}
+            showTool={showTool}
+            openTools={openTools}
+          />
         ))}
       </ul>
     </div>

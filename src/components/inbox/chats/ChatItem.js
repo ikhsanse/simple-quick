@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const ChatItem = (props) => {
-  const [showTool, setShowTool] = useState(false)
   const [bgColor, setbgColor] = useState();
   const [color, setColor] = useState();
-  // console.log(props.chat)
   
   const participant = props.chat.participant;
   const [lastChat, setLastChat] = useState(false);
@@ -44,6 +42,9 @@ const ChatItem = (props) => {
     props.chat.text,
   ]);
 
+  const openToolsHandler = (idx) => {
+    props.openTools(idx)
+  }
   return (
     <>
       {lastChat === true && props.chatNumberItem >3 ? (
@@ -82,14 +83,14 @@ const ChatItem = (props) => {
           <div
             className={`${participant === 2 ? "order-first" : "order-last"} relative`}
           >
-            <p onClick={()=>setShowTool(!showTool)} className="font-bold cursor-pointer self-start py-0 leading-[2px] mx-2">
+            <p onClick={()=>openToolsHandler(props.index)} className="font-bold cursor-pointer self-start py-0 leading-[2px] mx-2">
               ...
             </p>
-            <ul className={`${showTool ? 'block' : 'hidden'} divide-y-[1px] w-auto rounded border-[1px] bg-white absolute mt-2 text-[12px] 2xl:text-[14px]`}>
-              <li className="cursor-pointer ml-1 pr-10" onClick={()=>{setShowTool(false)}}>
+            <ul className={`${props.showTool === props.index ? 'block' : 'hidden'} divide-y-[1px] w-auto rounded border-[1px] bg-white absolute mt-2 text-[12px] 2xl:text-[14px]`}>
+              <li className="cursor-pointer ml-1 pr-10" onClick={()=>openToolsHandler(undefined)}>
                 <p className="text-[#2F80ED]">Edit</p>
               </li>
-              <li className="ml-1" onClick={()=>{setShowTool(false)}} >
+              <li className="ml-1" onClick={()=>openToolsHandler(undefined)} >
                 <p className="text-[#EB5757] cursor-pointer">Delete</p>
               </li>
             </ul>
