@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Datepicker from "tailwind-datepicker-react";
 import "./Todo.css";
 
@@ -72,8 +72,11 @@ const TodoItem = (props) => {
   const [status, setStatus] = useState(props.todo.completed);
   const [show, setShow] = useState(false);
   const [expand, setExpand] = useState(false);
-  const [editValue, setEditValue] = useState(`${props.todo.todo} - ${editDetail}`);
+  const [editValue, setEditValue] = useState(
+    `${props.todo.todo} - ${editDetail}`
+  );
   const [openEdit, setOpenEdit] = useState(false);
+  const deleteRef = useRef(null);
   // const [openDelete, setOpenDelete] = useState(false);
   const handleChange = (date) => {
     //
@@ -105,13 +108,32 @@ const TodoItem = (props) => {
   // };
 
   const removeTodo = (id) => {
-    props.removeTodo(id)
-    props.setOpenDelete(undefined)
-  }
+    props.removeTodo(id);
+    props.setOpenDelete(undefined);
+    
+  };
 
   const openDeleteHandler = (id) => {
-    props.setOpenDelete(id)
-  }
+    props.setOpenDelete(id);
+    props.openHandler()
+  };
+
+  useEffect(() => {
+    let closeOpenDelete = (e) => {
+      if (
+        deleteRef.current &&
+        props.openDelete &&
+        !deleteRef.current.contains(e.target)
+      ) {
+        // console.log(deleteRef.current);
+        props.setOpenDelete(undefined);
+      }
+    };
+    document.addEventListener("mousedown", closeOpenDelete);
+
+    return()=> {document.removeEventListener("mousedown", closeOpenDelete)}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   let expandContent;
 
@@ -193,7 +215,11 @@ const TodoItem = (props) => {
           </span>
         </div>
         <div className="flex relative">
-          <span className={`${status ? 'hidden' : 'flex'} 2xl:text-[12px] text-[11px] text-red-600 mx-1`}>
+          <span
+            className={`${
+              status ? "hidden" : "flex"
+            } 2xl:text-[12px] text-[11px] text-red-600 mx-1`}
+          >
             2 Days Left
           </span>
           <span className="2xl:text-[12px] text-[11px] mx-1">2/2/2023</span>
@@ -213,17 +239,19 @@ const TodoItem = (props) => {
               fill="#4F4F4F"
             />
           </svg>
+
           <span
-            onClick={()=>openDeleteHandler(props.todo.id)}
+            onClick={() => openDeleteHandler(props.todo.id)}
             className="text-[12px] mx-1 leading-[6px] select-none cursor-pointer"
           >
             ...
           </span>
-          {props.openDelete === props.todo.id ? (
+          {(props.openDelete === props.todo.id) && props.isOpen ? (
             <button
+            ref={deleteRef}
               onClick={() => removeTodo(props.todo.id)}
               // onClose={props.setOpenDelete(undefined)}
-              className="absolute z-[9999] text-[12px] border-[1px] bg-white rounded py-1 pl-2 pr-5 text-[#EB5757] right-0 top-4"
+              className="absolute z-[9999] text-[12px] border-[1px] bg-white rounded py-2 pl-2 pr-5 text-[#EB5757] right-0 top-4"
             >
               Delete
             </button>

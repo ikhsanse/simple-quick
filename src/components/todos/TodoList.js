@@ -7,6 +7,7 @@ const TodoList = (props) => {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [openDelete, setOpenDelete] = useState();
+  const [isOpen, setIsOpen] = useState(false)
   const getTodos = async () => {
     setIsloading(true);
     try {
@@ -33,6 +34,17 @@ const TodoList = (props) => {
     // console.log(id)
     setOpenDelete(id)
   }
+  useEffect(()=> {
+    if(openDelete) {
+      setIsOpen(true)
+    } else {
+      setIsOpen(false)
+    }
+  },[openDelete])
+
+  const openHandler = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <>
       {isLoading ? (
@@ -48,6 +60,8 @@ const TodoList = (props) => {
                 removeTodo={removeTodo}
                 setOpenDelete={openDeleteHandler}
                 openDelete={openDelete}
+                isOpen={isOpen}
+                openHandler={openHandler}
               />
             ))}
             {props.show && <TodoNewItem />}
