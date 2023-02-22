@@ -26,6 +26,10 @@ const TodoList = (props) => {
     const newTodo = todos.filter(todo => todo.id !== id)
     setTodos(newTodo)
   }
+
+  const addTodo = (newTodo) => {
+    setTodos([...todos, newTodo])
+  }
  
   useEffect(() => {
     getTodos();
@@ -64,7 +68,7 @@ const TodoList = (props) => {
                 openHandler={openHandler}
               />
             ))}
-            {props.show && <TodoNewItem />}
+            {props.show && <TodoNewItem addTodo={addTodo} />}
           </ul>
         </div>
       )}

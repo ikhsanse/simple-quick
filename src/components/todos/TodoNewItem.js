@@ -64,12 +64,18 @@ const options = {
     defaultDate: today,
     language: "en",
   };
-const TodoNewItem = () => {
+const TodoNewItem = (props) => {
     const [status, setStatus] = useState(false);
     const [show, setShow] = useState(false);
     const [expand, setExpand] = useState(true);
+    const [newTodo, setNewTodo] = useState({
+      todo : '',
+      detail : ''
+    })
+    // console.log(newTodo)
     const handleChange = (date) => {
-      console.log(date);
+      const tgl = new Date(date)
+      // console.log(tgl);
     };
     const handleClose = () => {
       setShow(!show);
@@ -82,6 +88,23 @@ const TodoNewItem = () => {
       setExpand(!expand);
     };
 
+    const handleInputChange = (e) => {
+      setNewTodo({...newTodo, [e.target.name] : e.target.value})
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      const id = Math.floor((Math.random() * 1000))
+      const activity = newTodo.todo
+      const todoActivity = {
+        todo: activity, id: id, userId: 1, completed: false
+      }
+      props.addTodo(todoActivity)
+      setNewTodo({
+        todo:'',
+        detail:''
+      })
+    }
     let expandContent;
   
     if (expand) {
@@ -119,8 +142,11 @@ const TodoNewItem = () => {
               </svg>
             </div>
             <div className='w-full'>
-              <textarea type="text" className='w-3/4 text-[11px] rounded border-slate-300' rows="2" placeholder='Type detail todo activities Here..'/>
+              <input onChange={handleInputChange} required value={newTodo.detail} type="text" className='w-3/4 text-[11px] rounded border-slate-300' name='detail' rows="2" placeholder='Type detail todo activities Here..'/>
             </div>
+          </div>
+          <div>
+            <button type='submit' className='bg-sky-500 text-sm text-white p-2 ml-6 mt-2 rounded hover:bg-sky-400 ease-in duration-200'>Submit</button>
           </div>
         </div>
       );
@@ -129,9 +155,11 @@ const TodoNewItem = () => {
     }
     return (
       <li className="py-3">
+        <form onSubmit={handleSubmit}>
         <div className="flex justify-between">
           <div className="flex">
             <input
+              disabled
               onChange={handleStatus}
               type="checkbox"
               checked={status}
@@ -140,8 +168,11 @@ const TodoNewItem = () => {
               id=""
             />
             <input
+              onChange={handleInputChange}
+              value={newTodo.todo}
+              required
               className={`${status ? "line-through" : ""} text-[11px] border-slate-300 rounded border-[1px] py-1`}
-              type="text" placeholder='Type Task Title'
+              type="text" placeholder='Type Task Title' name='todo'
             >
               
             </input>
@@ -165,6 +196,7 @@ const TodoNewItem = () => {
           </div>
         </div>
         <div className="ml-6 transition-all duration-500">{expandContent}</div>
+        </form>
       </li>
     );
 }
